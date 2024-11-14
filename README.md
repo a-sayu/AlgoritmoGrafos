@@ -1,4 +1,4 @@
-# Grafos
+# Implementação de Algoritmo de Grafos
 
 Implementação em C de Algoritmos de Grafos utilizando Matriz de Adjacência **e** Listas de Adjacências:
 
