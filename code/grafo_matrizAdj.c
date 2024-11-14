@@ -59,6 +59,16 @@ void remover_aresta(pont_grafo grafo, int u, int v);
  **/
 int verificar_aresta(pont_grafo grafo, int u, int v);
 
+/**
+  * @brief Função que imprime as arestas do grafo
+  *
+  * Vai percorrer cada linha, para encontrar
+  * uma conexão entre os dois vértices
+  * evitando de pegar o mesmo vertice
+  * com o outro vertice sendo +1 a frente
+  * 
+  * @param grafo grafo a ser precorrido
+ **/
 void imprimir_arestas(pont_grafo grafo);
 
 // Implementação das Funções
@@ -130,12 +140,6 @@ pont_grafo ler_grafo() {
 
 void imprimir_arestas(pont_grafo grafo) {
     int u, v;
-    /**
-     * Vai percorrer cada linha, para encontrar
-     * uma conexão entre os dois vértices
-     * evitando de pegar o mesmo vertice
-     * com o outro vertice sendo +1 a frente
-    **/
     for(u = 0; u < grafo->vert; u++)
         for (v = u+1; v < grafo->vert; v++)
             if (grafo->adj[u][v])
