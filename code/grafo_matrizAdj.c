@@ -8,7 +8,9 @@ typedef struct {
     int vert;
 } Grafo;
 
-// Ponteiro para o grafo
+/**
+ * @brief Ponteiro para o grafo
+ */
 typedef Grafo *pont_grafo;
 
 /** 
@@ -145,3 +147,58 @@ void imprimir_arestas(pont_grafo grafo) {
             if (grafo->adj[u][v])
                 printf("{%d,%d}", u, v);
 }
+
+
+///////////////////////////////
+
+/**
+ * @brief Funçao para ver quantos vizinhos u tem.
+ * 
+ * @param grafo que esta sendo observado
+ * @param u vértice que esta sendo observado
+ * @return int O número de vizinhos que um vértice u tem
+ */
+int grau (pont_grafo grafo, int u) {
+    int v, grau = 0;
+    for (v = 0; v < grafo->vert; v++)
+        if (grafo->adj[u][v]) grau++;
+    return grau;
+}
+
+/**
+ * @brief Função que verifica o vértice com a maior quantidade de vizinhos
+ * 
+ * @param grafo que esta sendo observado
+ * @return int O vertice com o maior numero de vizinhos.
+ */
+int mais_popular(pont_grafo grafo) {
+    int u, vert_popular, grau_maior, grau_atual;
+    vert_popular = 0;
+    grau_maior = grau(grafo, 0);
+    for (u = 1; u < grafo->vert; u++) {
+        grau_atual = grau(grafo, u);
+        if (grau_atual > grau_maior) {
+            grau_maior = grau_atual;
+            vert_popular = u;
+        }
+    }
+    return vert_popular;
+}
+
+/**
+ * @brief Função que imprime amigos de amigos de u
+ * 
+ * @param grafo sendo observado
+ * @param u vertice que esta sendo observado
+ */
+void imprimir_recomendacoes(pont_grafo grafo, int u) {
+    int v, w;
+    // Ele percorre os vertices procurando vizinhos de u
+    for (v = 0; v < grafo->vert; v++)
+        if (grafo->adj[u][v])
+            for (w = 0; w < grafo->vert; w++) // percorre os vertices procurando amigos dos amigos encontrados
+                if (grafo->adj[v][w] && w != u && !grafo->adj[u][w])
+                    printf("%d\n", w);
+}
+
+// u origem, v destino
