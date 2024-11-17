@@ -5,7 +5,16 @@ Implementação em C de Algoritmos de Grafos utilizando Matriz de Adjacência **
 - [x] Matriz
 - [x] Lista
 
+Matriz:
+
 - [ ] Busca em Largura
 - [ ] Busca em Profundidade
+- [ ] Dijikstra
+- [ ] Arvore Geradora Mínima
+
+Lista:
+
+- [ ] Busca em Largura
+- [X] Busca em Profundidade
 - [ ] Dijikstra
 - [ ] Arvore Geradora Mínima
