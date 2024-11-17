@@ -92,3 +92,28 @@ void visita_recursiva(pont_grafo grafo, int *componentes, int comp, int v) {
         if (componentes[t->vert] == -1) visita_recursiva(grafo, componentes, comp, t->vert);
 }
 
+int *encontrar_caminhos(pont_grafo grafo, int u) {
+    int i, *pai = malloc(grafo->n*sizeof(int));
+    for (i = 0; i < grafo->n; i++)
+        pai[i] = -1;
+    busca_em_profundidade(grafo, pai, u, u);
+    return pai;
+}
+
+void busca_em_profundidade (pont_grafo grafo, int *pai, int p, int v) {
+    pont_no t;
+    pai[v] = p;
+    for (t = grafo->adjacencia[v]; t != NULL; t = t->prox)
+        if (pai[t->vert] == -1) busca_em_profundidade(grafo, pai, v, t->vert);
+}
+
+void imprimir_caminho(int v, int *pai) {
+    if (pai[v] != v) imprimir_caminho(pai[v], pai);
+    printf ("%d", v);
+}
+
+void imprimir_caminho_reverso(int v, int *pai) {
+    printf("%d", v);
+    if (pai[v] != v) imprimir_caminho_reverso(pai[v], pai);
+}
+

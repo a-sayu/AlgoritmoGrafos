@@ -96,8 +96,20 @@ int verificar_aresta(pont_grafo grafo, int u, int v);
  */
 void imprimir_arestas(pont_grafo grafo);
 
+/////////////
+
 int *encontrar_componentes(pont_grafo grafo);
 
 void visita_recursiva(pont_grafo, int *componentes, int componente, int v);
+
+////////////
+
+int* encontrar_caminhos(pont_grafo grafo, int u);
+
+void busca_em_profundidade(pont_grafo, int *pai, int p, int v);
+
+void imprimir_caminho(int v, int *pai);
+
+void imprimir_caminho_reverso(int v, int *pai);
 
 #endif
