@@ -73,5 +73,22 @@ void imprimir_aresta(pont_grafo grafo) {
             printf ("{%d, %d}\n", u, t->vert);
 }
 
+int *encontrar_componentes(pont_grafo grafo) {
+    int i, c = 0, *componentes = malloc(grafo->n * sizeof(int));
+    for (i = 0; i < grafo->n; i++)
+        componentes[i] = -1;
+    for (i = 0; i < grafo->n; i++)
+        if (componentes[i] == -1) {
+            visita_recursiva(grafo, componentes, c, i);
+            c++;
+        }
+    return componentes;
+}
 
+void visita_recursiva(pont_grafo grafo, int *componentes, int comp, int v) {
+    pont_no t;
+    componentes[v] = comp;
+    for(t = grafo->adjacencia; t != NULL; t = t->prox)
+        if (componentes[t->vert] == -1) visita_recursiva(grafo, componentes, comp, t->vert);
+}
 

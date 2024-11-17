@@ -96,4 +96,8 @@ int verificar_aresta(pont_grafo grafo, int u, int v);
  */
 void imprimir_arestas(pont_grafo grafo);
 
+int *encontrar_componentes(pont_grafo grafo);
+
+void visita_recursiva(pont_grafo, int *componentes, int componente, int v);
+
 #endif
