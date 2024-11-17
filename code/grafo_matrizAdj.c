@@ -124,3 +124,24 @@ void imprimir_recomendacoes(pont_grafo grafo, int u) {
                     printf("%d\n", w);
 }
 
+///////////////////////////////
+
+int encontrar_caminho(pont_grafo grafo, int u, int v) {
+    int encontrado, i, *visitado =malloc(grafo->vert * sizeof(int));
+    for (i = 0; i < grafo->vert; i++) visitado[i] = 0;
+    encontrado = busca_recursiva(grafo, visitado, u, v);
+    free(visitado);
+    return encontrado;
+}
+
+int busca_recursiva(pont_grafo grafo, int *visitado, int u, int v) {
+    int i;
+    if (u == v) return 1;
+    visitado[u] = 1;
+    for (i = 0; i < grafo->vert; i++)
+        if (grafo->adj[u][i] && !visitado[i])
+            if (busca_recursiva(grafo, visitado, i, v)) return 1;
+    return 0;
+}
+
+

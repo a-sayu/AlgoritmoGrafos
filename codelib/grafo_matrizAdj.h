@@ -81,4 +81,8 @@ void imprimir_arestas(pont_grafo grafo);
  */
 pont_grafo ler_grafo();
 
+int encontrar_caminho(pont_grafo grafo, int u, int v);
+
+int busca_recursiva(pont_grafo, int *visitado, int u, int v);
+
 #endif
