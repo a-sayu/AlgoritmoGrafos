@@ -21,6 +21,8 @@ typedef Grafo *pont_grafo;
  **/
 pont_grafo criar_grafo(int n);
 
+pont_grafo criar_grafo_peso(int n);
+
 /**
   * @brief Função para destruir um grafo
   * 
@@ -40,6 +42,10 @@ void destruir_grafo(pont_grafo grafo);
  **/
 void inserir_aresta(pont_grafo grafo, int u, int v);
 
+void inserir_aresta_direcao(pont_grafo grafo, int u, int v);
+
+void inserir_aresta_direcao_peso(pont_grafo grafo, int u, int v, int peso);
+
 /**
   * @brief Função que remove uma aresta
   * 
@@ -52,6 +58,10 @@ void inserir_aresta(pont_grafo grafo, int u, int v);
  **/
 void remover_aresta(pont_grafo grafo, int u, int v);
 
+void remover_aresta_direcao(pont_grafo grafo, int u, int v);
+
+void remover_aresta_direcao_peso(pont_grafo grafo, int u, int v);
+
 /**
   * @brief Função que retorna se há aresta
   * 
@@ -61,6 +71,8 @@ void remover_aresta(pont_grafo grafo, int u, int v);
   * @return int 1: Há aresta || 0: Não há aresta
  **/
 int verificar_aresta(pont_grafo grafo, int u, int v);
+
+int verificar_aresta_peso(pont_grafo grafo, int u, int v);
 
 /**
   * @brief Função que imprime as arestas do grafo
@@ -74,6 +86,10 @@ int verificar_aresta(pont_grafo grafo, int u, int v);
  **/
 void imprimir_arestas(pont_grafo grafo);
 
+void imprimir_arestas_direcao(pont_grafo grafo);
+
+void imprimir_arestas_direcao_peso(pont_grafo grafo);
+
 /**
  * @brief Função para ler uma inserção de grafo
  * 
@@ -81,8 +97,20 @@ void imprimir_arestas(pont_grafo grafo);
  */
 pont_grafo ler_grafo();
 
+pont_grafo ler_grafo_direcao();
+
+pont_grafo ler_grafo_direcao_peso();
+
 int encontrar_caminho(pont_grafo grafo, int u, int v);
 
 int busca_recursiva(pont_grafo, int *visitado, int u, int v);
+
+// TODO: normal + peso + direcao
+
+int* busca_em_profundidade(pont_grafo grafo, int u);
+
+// TODO: normal + peso + direcao
+
+int* busca_em_largura(pont_grafo grafo, int u);
 
 #endif

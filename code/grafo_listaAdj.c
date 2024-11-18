@@ -85,7 +85,7 @@ int *encontrar_componentes(pont_grafo grafo) {
     return componentes;
 }
 
-void visita_recursiva(pont_grafo grafo, int *componentes, int comp, int v) {
+void identificar_comp_recursiva(pont_grafo grafo, int *componentes, int comp, int v) {
     pont_no t;
     componentes[v] = comp;
     for(t = grafo->adjacencia; t != NULL; t = t->prox)
@@ -117,3 +117,5 @@ void imprimir_caminho_reverso(int v, int *pai) {
     if (pai[v] != v) imprimir_caminho_reverso(pai[v], pai);
 }
 
+
+// busca em largura, dijikstra, arvore geradora minima

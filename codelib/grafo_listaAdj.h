@@ -7,6 +7,8 @@ typedef struct No {
     int vert;
     // Próximo Nó
     struct No *prox;
+    // Peso da aresta
+    int peso;
 } No;
 
 typedef No *pont_no;
@@ -100,16 +102,30 @@ void imprimir_arestas(pont_grafo grafo);
 
 int *encontrar_componentes(pont_grafo grafo);
 
-void visita_recursiva(pont_grafo, int *componentes, int componente, int v);
+void identificar_comp_recursiva(pont_grafo, int *componentes, int componente, int v);
 
 ////////////
 
 int* encontrar_caminhos(pont_grafo grafo, int u);
 
-void busca_em_profundidade(pont_grafo, int *pai, int p, int v);
-
 void imprimir_caminho(int v, int *pai);
 
 void imprimir_caminho_reverso(int v, int *pai);
+
+////////////
+
+void busca_em_profundidade(pont_grafo, int *pai, int p, int v);
+
+void ordenacao_topologica(pont_grafo grafo);
+
+void visita_ord_topologica_rec(pont_grafo, int *visitado, int v);
+
+///////////
+
+int* busca_em_largura(pont_grafo grafo, int u);
+
+///////////
+
+
 
 #endif
